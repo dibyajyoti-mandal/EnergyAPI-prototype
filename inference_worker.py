@@ -60,7 +60,7 @@ class InferenceWorker:
         forecast_mw = base + random.uniform(-3000.0, 3000.0)
 
         logger.info(
-            f"[InferenceWorker] 🤖 [DUMMY] Model inference complete for {region_id}. "
+            f"[InferenceWorker] [DUMMY] Model inference complete for {region_id}. "
             f"Predicted load for next {FORECAST_HORIZON_HRS} h: {forecast_mw:.0f} MW"
         )
         return forecast_mw
@@ -78,7 +78,7 @@ class InferenceWorker:
 
             try:
                 logger.info(
-                    f"[InferenceWorker] 📨 Got SyncEvent — region={event.region_id}, "
+                    f"[InferenceWorker] Got SyncEvent — region={event.region_id}, "
                     f"records={event.records_ingested}, synced_at={event.synced_at:%H:%M:%S}"
                 )
 
@@ -92,7 +92,7 @@ class InferenceWorker:
                     forecast_mw=forecast_mw,
                 )
                 logger.info(
-                    f"[InferenceWorker] ✅ Forecast written to DB for {event.region_id} "
+                    f"[InferenceWorker] Forecast written to DB for {event.region_id} "
                     f"→ {forecast_mw:.0f} MW over next {FORECAST_HORIZON_HRS} h"
                 )
 

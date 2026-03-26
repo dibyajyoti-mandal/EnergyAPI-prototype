@@ -113,11 +113,11 @@ class EntsoeSyncEngine:
                     f"Latest load: {latest_mw:.0f} MW"
                 )
 
-                # 🔔 Fire event — InferenceWorker is listening
+                # Fire event — InferenceWorker is listening
                 event = SyncEvent(region_id=region_id, records_ingested=n, synced_at=now)
                 self.events.put(event)
                 logger.info(
-                    f"[SyncEngine] 🔔 SyncEvent fired for {region_id} "
+                    f"[SyncEngine] SyncEvent fired for {region_id} "
                     f"→ InferenceWorker will generate forecast"
                 )
                 return True

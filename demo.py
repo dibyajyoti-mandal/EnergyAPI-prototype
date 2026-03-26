@@ -71,7 +71,7 @@ def main():
 
     # ── SCENARIO B: Recent query — data is FRESH ──────────────────────────
     print_header("SCENARIO B — Recent query, data marked FRESH (5 minutes old)")
-    logger.info("Artificially setting last_updated to 5 minutes ago...")
+    # logger.info("Artificially setting last_updated to 5 minutes ago...")
     db.update_metadata(REGION, datetime.now() - timedelta(minutes=5), "SUCCESS")
 
     result = sync_engine.handle_historical_query(REGION, since_hours=1.0)
@@ -86,7 +86,7 @@ def main():
 
     # ── SCENARIO C: Recent query — data is STALE ─────────────────────────
     print_header("SCENARIO C — Recent query, data STALE (2 hours old)")
-    logger.info("Artificially setting last_updated to 2 hours ago...")
+    # logger.info("Artificially setting last_updated to 2 hours ago...")
     db.update_metadata(REGION, datetime.now() - timedelta(hours=2), "SUCCESS")
 
     logger.info("Issuing recent-history query — staleness gatekeeper should trigger sync...")
@@ -105,7 +105,7 @@ def main():
     logger.info("✅ SCENARIO C PASSED\n")
 
     # ── SCENARIO D: Forecast query ─────────────────────────────────────────
-    print_header("SCENARIO D — Forecast query (lightning-fast SELECT)")
+    print_header("SCENARIO D — Forecast query")
     logger.info("User requests forecast — API does a direct DB lookup, no inference.")
     forecast = sync_engine.get_forecast(REGION)
 
