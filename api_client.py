@@ -1,4 +1,3 @@
-# api_client.py
 import time
 import random
 import logging
@@ -7,9 +6,9 @@ logger = logging.getLogger("MockAPI")
 
 class MockEntsoeClient:
     def fetch_recent_data(self, region_id: str) -> dict:
-        logger.info(f"🌐 Requesting fresh data for {region_id} from ENTSO-E...")
+        logger.info(f"Requesting fresh data for {region_id} from ENTSO-E...")
         
-        time.sleep(2)
+        time.sleep(2) #delay 2s to mock network latency
         
         if random.random() < 0.05:
             raise ConnectionError(f"ENTSO-E API 500 Internal Server Error for {region_id}")
